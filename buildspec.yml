@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "⬇ Installing Bun..."
+      - curl -fsSL https://bun.sh/install | bash
+      - export BUN_INSTALL="$HOME/.bun"
+      - export PATH="$BUN_INSTALL/bin:$PATH"
+      - echo " Installing api & client"
+      - cd client && bun install && cd ..
+      - cd api && bun install && cd ..
+
+  build:
+    commands:
+      - echo " Building client"
+      - cd frontend && bun run build && cd ..
+      - echo " Zipping client"
+      - zip -r client.zip client/dist
+      - echo "Zipping api"
+      - zip -r api.zip api
+
+artifacts:
+  files:
+    - frontend.zip
+    - backend.zip

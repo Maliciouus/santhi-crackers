@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 278 20% 98%; /* very light violet bg */
+    --foreground: 278 80% 15%; /* dark purple text */
+
+    --card: 278 30% 95%;
+    --card-foreground: 278 80% 15%;
+
+    --popover: 278 30% 95%;
+    --popover-foreground: 278 80% 15%;
+
+    --primary: 275 50% 35%; /* approx #56298A */
+    --primary-foreground: 0 0% 100%; /* white text */
+
+    --secondary: 278 45% 65%; /* soft violet */
+    --secondary-foreground: 278 80% 15%;
+
+    --muted: 278 40% 85%;
+    --muted-foreground: 278 30% 35%;
+
+    --accent: 278 40% 90%;
+    --accent-foreground: 278 80% 20%;
+
+    --destructive: 0 100% 35%; /* red */
+    --destructive-foreground: 0 0% 100%; /* white */
+
+    --border: 278 40% 65%;
+    --input: 278 40% 95%;
+    --ring: 275 70% 45%; /* match primary, lighter ring */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 278 30% 10%;
+    --foreground: 278 20% 90%;
+
+    --card: 278 30% 15%;
+    --card-foreground: 278 20% 90%;
+
+    --popover: 278 30% 15%;
+    --popover-foreground: 278 20% 90%;
+
+    --primary: 275 60% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 278 30% 30%;
+    --secondary-foreground: 278 20% 90%;
+
+    --muted: 278 20% 25%;
+    --muted-foreground: 278 20% 70%;
+
+    --accent: 278 20% 35%;
+    --accent-foreground: 278 20% 90%;
+
+    --destructive: 0 100% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 278 30% 30%;
+    --input: 278 30% 20%;
+    --ring: 275 60% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+body {
+	font-family: 'Ubuntu', sans-serif !important;
+}
+
+.hidescrollbarthumb {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.hidescrollbarthumb::-webkit-scrollbar {
+	display: none;
+}
+
+.hidescrollbarthumb::-webkit-scrollbar-thumb {
+	display: none;
+}
+
+.hidescrollbarthumb::-webkit-scrollbar-track {
+	display: none;
+}
+
+label {
+	@apply text-zinc-700;
+}

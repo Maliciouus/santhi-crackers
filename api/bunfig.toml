@@ -1,0 +1,15 @@
+# bunfig.toml
+
+# Where your entry file is
+entrypoint = "src/main.ts"
+
+# Specify what extensions bun should resolve automatically
+extensions = [".ts", ".js"]
+
+# Enable sourcemaps for easier debugging
+sourcemap = true
+
+# Environment variables
+[env]
+  PORT = "3000"
+  NODE_ENV = "production"
