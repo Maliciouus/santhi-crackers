@@ -14,7 +14,7 @@ phases:
   build:
     commands:
       - echo " Building client"
-      - cd frontend && bun run build && cd ..
+      - cd client && bun run build && cd ..
       - echo " Zipping client"
       - zip -r client.zip client/dist
       - echo "Zipping api"
