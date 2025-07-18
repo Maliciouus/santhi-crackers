@@ -10,9 +10,7 @@ phases:
       - cd client && bun install && cd ..
       - cd api && bun install && cd ..
 
-  prebuild:
-    commands:
-      -bun install
+
   build:
     commands:
       - echo "Building client..."
