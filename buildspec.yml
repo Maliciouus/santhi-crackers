@@ -14,13 +14,13 @@ phases:
       - echo "Building client..."
       - cd client
       - bun run build
-      - zip -r ../client.zip dist || echo "No client build output"
+      - zip -r ../client.zip build || echo "No client build output"
       - cd ..
       
       - echo "Building API..."
       - cd api
       - bun run build
-      - zip -r ../api.zip dist || echo "No API build output"
+      - zip -r ../api.zip build || echo "No API build output"
       - cd ..
   post_build:
     commands:
