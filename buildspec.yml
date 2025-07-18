@@ -14,6 +14,7 @@ phases:
   build:
     commands:
       - echo " Building client"
+      - mkdir client
       - cd client && bun run build && cd ..
       - echo " Zipping client"
       - zip -r client.zip client/dist
@@ -22,5 +23,5 @@ phases:
 
 artifacts:
   files:
-    - frontend.zip
-    - backend.zip
+    - client.zip
+    - api.zip
