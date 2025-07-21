@@ -1,8 +1,9 @@
 version: 0.0
 os: linux
+
 files:
-  - source: /
-    destination: /var/www/your-app-name
+  - source: client.zip
+    destination: /var/www/html/
     overwrite: yes
 
 hooks:

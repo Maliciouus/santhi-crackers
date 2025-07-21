@@ -26,4 +26,4 @@ artifacts:
   files:
     - client.zip
     - appsepc,yml
-  
+    - scripts/**
