@@ -2,12 +2,26 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/app
+    destination: /var/www/your-app-name
+    overwrite: yes
 
 hooks:
   BeforeInstall:
-    - location: scripts/install.sh
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: root
+
+  AfterInstall:
+    - location: scripts/after_install.sh
+      timeout: 300
       runas: ec2-user
+
   ApplicationStart:
     - location: scripts/start.sh
+      timeout: 300
+      runas: ec2-user
+
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 300
       runas: ec2-user
