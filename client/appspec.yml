@@ -2,8 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
-    destination: /var/www/html/suvanthi-crackers
+  - source: client
+    destination: /var/www/html/client
     overwrite: yes
 
 hooks:
