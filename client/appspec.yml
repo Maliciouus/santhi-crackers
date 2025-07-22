@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: /
-    destination: /var/www/html/
+    destination: /var/www/html/suvanthi-crackers
     overwrite: yes
 
 hooks:
