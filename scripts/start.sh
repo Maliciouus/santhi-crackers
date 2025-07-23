@@ -1,10 +1,14 @@
 #!/bin/bash
 set -e
 
-echo "======== [Start] Serving app.html using Bun + PM2 ========"
+echo "======== [Install] Setting up environment ========"
 
-cd /var/www/html
+# Update packages
+sudo yum update -y
 
-pm2 stop all || true
-pm2 start src/index.ts --interpreter bun --name app.html
-pm2 save
+# Install Node.js (if not already installed)
+curl -fsSL https://rpm.nodesource.com/setup_18.x | sudo bash -
+sudo yum install -y nodejs
+
+# ✅ Install PM2 globally
+sudo npm install -g pm2
