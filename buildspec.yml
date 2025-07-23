@@ -32,7 +32,6 @@ phases:
       - cp -r scripts bundle/
       - cd bundle
       - zip -r ../client-bundle.zip ./
-      - cd ..
       - echo "Build artifact ready: client-bundle.zip"
 
 artifacts:
