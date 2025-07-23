@@ -1,5 +1,10 @@
 #!/bin/bash
-echo "Installing dependencies..."
-cd /home/ec2-user/app
-bun install -g pm2
-bun install
+set -e
+
+echo "======== [AfterInstall] Starting ========"
+
+# Restart NGINX after deployment
+echo "Starting NGINX..."
+sudo systemctl start nginx
+
+echo "======== [AfterInstall] Done ========"
