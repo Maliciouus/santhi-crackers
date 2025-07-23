@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       nodejs: latest
     commands:
-      - echo "Installing Bun"
+      - echo "Installing Bun runtime..."
       - curl -fsSL https://bun.sh/install | bash
       - export BUN_INSTALL="$HOME/.bun"
       - export PATH="$BUN_INSTALL/bin:$PATH"
@@ -13,20 +13,27 @@ phases:
 
   pre_build:
     commands:
-      - echo "Installing dependencies"
+      - echo "Installing dependencies..."
       - cd client
       - bun install
 
   build:
     commands:
-      - echo "Building app"
+      - echo "Building the client app..."
       - bun run build
       - cd ..
 
   post_build:
     commands:
-      - echo "Zipping artifacts"
-      - zip -r client-bundle.zip client/build appspec.yml scripts/
+      - echo "Preparing deployment bundle..."
+      - mkdir -p bundle
+      - cp -r client/build bundle/client
+      - cp appspec.yml bundle/
+      - cp -r scripts bundle/
+      - cd bundle
+      - zip -r ../client-bundle.zip ./
+      - cd ..
+      - echo "Build artifact ready: client-bundle.zip"
 
 artifacts:
   files:
