@@ -22,9 +22,6 @@ phases:
       - echo "Building the client app..."
       - bun run build
       - cd ..
-
-  post_build:
-    commands:
       - echo "Preparing deployment bundle..."
       - mkdir -p bundle
       - cp -r client/build bundle/client
@@ -33,6 +30,11 @@ phases:
       - cd bundle
       - zip -r ../client-bundle.zip ./
       - echo "Build artifact ready: client-bundle.zip"
+
+  post_build:
+    commands:
+      - echo "Build done. Listing files:"
+      - ls -la
 
 artifacts:
   files:
