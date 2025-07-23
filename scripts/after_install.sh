@@ -1,3 +1,10 @@
 #!/bin/bash
-unzip /var/www/html/client-bundle.zip -d /var/www/html/
-rm /var/www/html/client-bundle.zip
+set -e
+
+echo "======== Installing PM2 ========"
+
+sudo yum update -y
+sudo amazon-linux-extras enable nginx1
+sudo yum install -y Pm2
+sudo systemctl start pm2
+sudo systemctl enable pm2
