@@ -2,41 +2,33 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: latest
     commands:
+      - echo "Installing Bun runtime..."
       - curl -fsSL https://bun.sh/install | bash
       - export BUN_INSTALL="$HOME/.bun"
       - export PATH="$BUN_INSTALL/bin:$PATH"
       - echo "Bun version:" && bun --version
       - cd client && bun install && cd ..
 
-  pre_build:
-    commands:
-      - echo "Installing dependencies..."
-      - cd client
-      - bun install
-
   build:
     commands:
-      - echo "Building the client app..."
+      - echo "Building Svelte client..."
+      - cd client
       - bun run build
       - cd ..
-      - echo "Preparing deployment bundle..."
-      - mkdir -p bundle
-      - cp -r client/build bundle/client
-      - cp appspec.yml bundle/
-      - cp -r scripts bundle/
-      - cd bundle
-      - zip -r ../client-bundle.zip ./
-      - echo "Build artifact ready: bundle.zip"
 
   post_build:
     commands:
-      - echo "Build done. Listing files:"
-      - ls -la
+      - echo "Packaging build..."
+      - mkdir -p bundle/client
+      - cp -r client/build/* bundle/client/
+      - cp appspec.yml bundle/
+      - cp -r scripts bundle/
+      - cd bundle
+      - zip -r ../client.zip ./
+      - cd ..
+      - echo "client.zip ready for deployment"
 
 artifacts:
   files:
-    - client-bundle.zip
-  discard-paths: yes
+    - client.zip
