@@ -2,28 +2,33 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: latest
     commands:
+      - echo "Installing Bun"
       - curl -fsSL https://bun.sh/install | bash
       - export BUN_INSTALL="$HOME/.bun"
       - export PATH="$BUN_INSTALL/bin:$PATH"
       - echo "Bun version:" && bun --version
-      - cd client && bun install && cd ..
-      - cd api && bun install && cd ..
 
+  pre_build:
+    commands:
+      - echo "Installing dependencies"
+      - cd client
+      - bun install
 
   build:
     commands:
-      - echo "Building client..."
-      - cd client
+      - echo "Building app"
       - bun run build
-      - zip -r ../client.zip build || echo "No client build output"
       - cd ..
+
   post_build:
     commands:
-      - echo "Build done. Listing files:"
-      - ls -la
+      - echo "Zipping artifacts"
+      - zip -r client-bundle.zip client/build appspec.yml scripts/
+
 artifacts:
   files:
-    - client.zip
-    - appspec.yml
-    - scripts/**
+    - client-bundle.zip
+  discard-paths: yes
