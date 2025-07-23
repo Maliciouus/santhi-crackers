@@ -2,8 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  - source: src
-    destination: /var/www/html/client
+  - source: client/
+    destination: /var/www/html/SANTHI-CRACKERS/client
     overwrite: yes
 
 hooks:

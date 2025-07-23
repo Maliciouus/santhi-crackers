@@ -5,9 +5,8 @@ echo "======== [BeforeInstall] ========"
 
 sudo systemctl stop nginx || true
 
-rm -rf /var/www/html/build || true
+sudo rm -rf /var/www/html/build || true
 
-chown ec2-user:ec2-user /var/www/html
-
-mkdir -p /var/www/html
-chmod -R 755 /var/www/html
+sudo mkdir -p /var/www/html
+sudo chown ec2-user:ec2-user /var/www/html
+sudo chmod -R 755 /var/www/html
