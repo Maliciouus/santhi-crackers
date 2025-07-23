@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
-echo "======== Installing PM2 ========"
+echo "======== [AfterInstall] Set ownership ========"
 
-sudo yum update -y
-sudo amazon-linux-extras enable nginx1
-sudo yum install -y Pm2
-sudo systemctl start pm2
-sudo systemctl enable pm2
+cd /var/www/html
+
+# Set correct permissions
+sudo chown -R ec2-user:ec2-user /var/www/html
