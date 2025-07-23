@@ -29,7 +29,7 @@ phases:
       - cp -r scripts bundle/
       - cd bundle
       - zip -r ../client-bundle.zip ./
-      - echo "Build artifact ready: client-bundle.zip"
+      - echo "Build artifact ready: bundle.zip"
 
   post_build:
     commands:
